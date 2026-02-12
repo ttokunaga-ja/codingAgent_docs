@@ -11,7 +11,8 @@ PostgreSQL 18.1 + Atlas + sqlc 前提で、スキーマ設計の意思決定（�
   - 外部公開IDはユニーク制約 + 露出するAPIのみで使用する
 
 ## ENUMの積極採用
-- 固定値（status/type/category）は PostgreSQL ENUM を第一候補とする
+- 固定値（status/type/category）は **PostgreSQL ENUM を必須** とする
+  - **VARCHAR で固定値を管理する設計は禁止**（typo/バリデーション漏れ/性能劣化を誘発する）
 - 利点: 型安全性、制約の明確化、アプリ側の分岐漏れ検知
 - 変更方針: 追加は許容、削除/名前変更は慎重に（互換性を壊しやすい）
 

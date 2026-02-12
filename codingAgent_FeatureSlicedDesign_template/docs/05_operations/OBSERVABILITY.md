@@ -13,6 +13,18 @@
 
 ---
 
+## SLO/アラート（Must）
+
+観測は「測る」だけで終わらせず、**運用の判断**（ページャ/チケット/改善）に繋げる必要があります。
+
+- SLO とアラートの最小セット：`SLO_ALERTING.md`
+- リリース相関：ログ/メトリクスに `releaseId`（ビルド番号/コミットSHA等）を付与し、リリース前後比較を可能にする
+- 取得元の分離：
+  - RUM（ブラウザ）：Core Web Vitals / JS エラー率 / 画面表示成功率
+  - BFF（Route Handler / Server Action）：5xx 率 / upstream 失敗 / latency
+
+---
+
 ## ログ
 
 - 形式：構造化（JSON）を推奨

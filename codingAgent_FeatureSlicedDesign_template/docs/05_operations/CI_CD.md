@@ -24,6 +24,28 @@
 
 ---
 
+## 標準ジョブ名と配置（SSOT）
+
+このテンプレートで CI を組むときは、ジョブ名と配置を以下で固定する（チーム間で呼び方を揃える）。
+
+- API 生成ドリフト検出（Must）
+  - Job 名（推奨）: `api-generate-check`
+  - 配置（推奨）: `.github/workflows/api-generate-check.yml`
+  - 仕様（SSOT）: `../03_integration/API_GEN.md`
+
+- i18n チェック（採用時の Must）
+  - Job 名（推奨）: `i18n-check`
+  - 配置（推奨）: `.github/workflows/i18n-check.yml`
+
+- E2E smoke（採用時の Must）
+  - Job 名（推奨）: `playwright-smoke`
+  - 配置（推奨）: `.github/workflows/playwright-smoke.yml`
+
+注意：SLO/アラートは CI の対象ではなく運用の契約。
+- SSOT: `SLO_ALERTING.md` と `OBSERVABILITY.md`
+
+---
+
 ## 最低限のパイプライン（テンプレ）
 
 PR（必須）：
@@ -32,12 +54,15 @@ PR（必須）：
 3. `npm run typecheck`
 4. `npm test`
 5. `npm run build`
-6. （採用するなら）`npm run api:generate` → diff チェック
+6. `api-generate-check`（`npm run api:generate` → diff チェック）
 7. （最小の）Playwright smoke（主要導線だけ）
 
 main（任意）：
 - デプロイ（staging → production）
 - 監視（エラー率/Vitals）を確認し、ロールバック判断できる状態
+
+推奨：main へのデプロイ後は `SLO_ALERTING.md` の対象導線をベースに、
+RUM（Vitals/JSエラー）と BFF（5xx/latency）を確認できるダッシュボードを必須にする。
 
 ---
 
@@ -47,6 +72,10 @@ main（任意）：
 
 - CIで `npm run api:generate` を実行し、生成物に差分が出ないことを確認
 - 差分が出たら、生成し忘れ or OpenAPIの更新漏れ
+
+推奨（運用ルール）：
+- `.github/workflows/api-generate-check.yml` は **PRで必ず実行**し、差分が出た場合は PR をブロックする
+- 実装例は `../03_integration/API_GEN.md` の「CI（Must）: 生成物ドリフト検出」を正とする
 
 ---
 

@@ -12,6 +12,7 @@ This folder contains **Skill** documents: compact, high-signal “rules of engag
 - Stack & SSOT: `SKILL_STACK_SSOT.md`
 - Go backend conventions: `SKILL_GO_1_25_BACKEND.md`
 - Database (Atlas/sqlc/pgx): `SKILL_DB_ATLAS_SQLC_PGX.md`
+- Deploy (GCP Cloud Run): `SKILL_DEPLOY_GCP_CLOUD_RUN.md`
 - Contracts (Proto/gRPC/Buf): `SKILL_CONTRACTS_PROTO_GRPC_BUF.md`
 - Contracts (OpenAPI/Orval): `SKILL_CONTRACTS_OPENAPI_ORVAL.md`
 - Resiliency: `SKILL_RESILIENCY_TIMEOUTS_RETRIES_IDEMPOTENCY.md`

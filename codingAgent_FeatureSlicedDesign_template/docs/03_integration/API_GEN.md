@@ -95,3 +95,54 @@ SSR/Hydration で初期表示データを埋めたい場合（推奨）：
 詳細：
 - SSR/Hydration の運用方針： [../02_tech_stack/SSR_HYDRATION.md](../02_tech_stack/SSR_HYDRATION.md)
 - TanStack Query の統合： [../02_tech_stack/STATE_QUERY.md](../02_tech_stack/STATE_QUERY.md)
+
+---
+
+## 8) CI（Must）: 生成物ドリフト検出（api:generate の差分を落とす）
+
+目的：
+- PR 時点で **OpenAPI / 生成設定 / 生成物** の整合性を強制し、契約ズレを運用で発見しない
+
+要件（Must）：
+- CI で `npm run api:generate` を実行する
+- 実行後に `src/shared/api`（特に `generated/`）へ差分が出ないこと（差分が出たら失敗）
+
+注意：
+- OpenAPI を別リポジトリ/環境から取得する場合は、生成前に `openapi.yaml/json` を取得してワークスペースへ配置する（取得方法はプロジェクトで統一）
+
+例（GitHub Actions）：
+
+```yaml
+name: api-generate-check
+
+on:
+  pull_request:
+    paths:
+      - 'openapi/**'
+      - 'orval.config.*'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'src/shared/api/**'
+      - '.github/workflows/api-generate-check.yml'
+
+jobs:
+  api-generate-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - run: npm ci
+
+      # OpenAPI を repo 外から取得する場合は、ここに取得ステップを入れる
+      # - run: ./scripts/fetch-openapi.sh
+
+      - run: npm run api:generate
+
+      - name: Fail if generated output changed
+        run: git diff --exit-code
+```

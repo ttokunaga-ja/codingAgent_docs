@@ -72,6 +72,8 @@ gRPC/Proto 上の ID は原則として `string` で表現し、内部向け/外
 ## Enum（Proto と PostgreSQL ENUM）標準
 固定値は DB では PostgreSQL ENUM、API 契約では Proto enum を使い、両者の対応関係を安定させる。
 
+- DB側で固定値を **VARCHAR（文字列）で管理する設計は禁止**。必ず PostgreSQL ENUM を使用する。
+
 ### Proto enum のルール（MUST）
 - ゼロ値は `*_UNSPECIFIED`（または `_UNKNOWN`）とし、意味的な値にしない
 - 既存の enum 値（番号）の再利用禁止。削除する場合は deprecated + reserved を検討する

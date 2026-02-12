@@ -21,6 +21,7 @@
 ## 設計ポリシー
 - **UUID + NanoID**: 内部主キーはUUID（推奨: UUIDv7）、外部公開キーはNanoIDを採用し、セキュリティとユーザビリティを両立する。
 - **ENUM型の積極採用**: 固定値の管理はPostgreSQL ENUM型を使用し、型安全性・パフォーマンス・可読性を向上させる。
+	- **VARCHAR型での固定値管理は禁止**（必ず PostgreSQL ENUM を使う）
 
 ## SSOT（Single Source of Truth）
 - DBスキーマ: Atlas の `schema.hcl`

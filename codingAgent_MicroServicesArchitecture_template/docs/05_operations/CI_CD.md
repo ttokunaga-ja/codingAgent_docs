@@ -9,6 +9,23 @@
 - 契約（.proto / OpenAPI）と生成物の整合性チェック（再生成差分の検出）
 - Atlas差分の検証（plan相当）
 
+---
+
+## 標準ジョブ名と配置（SSOT）
+
+このテンプレートで CI を組むときは、ジョブ名と配置を以下で固定する（運用とレビューの言葉を揃える）。
+
+- 契約/生成（Must）
+	- Job 名（推奨）: `contract-codegen-check`
+	- 配置（推奨）: `.github/workflows/contract-codegen-check.yml`
+	- 対象: `.proto` / `docs/openapi.yaml` / 生成物
+	- 仕様（SSOT）: `03_integration/CONTRACT_TESTING.md`
+
+- SLO/アラート（運用SSOT）
+	- CI で “SLO を満たす” を判定することはしない（リリース可否は別途運用で決める）
+	- SSOT: `05_operations/SLO_ALERTING.md` と `05_operations/OBSERVABILITY.md`
+	- ただし、アラートルールやダッシュボードを as-code で管理する場合は、構文チェック/参照整合は CI で行う
+
 ## セキュリティ（推奨）
 - 依存関係の脆弱性検査（Go / Node）
 - コンテナイメージスキャン
@@ -38,6 +55,9 @@
 - OpenAPI を更新/生成した場合:
 	- `docs/openapi.yaml` の再生成で差分が出ないこと
 	- Orval 等のフロント向け生成を前提に、破壊的変更がないこと（レビューで確認）
+
+推奨（運用ルール）：
+- `.github/workflows/contract-codegen-check.yml` は **PRで必ず実行**し、差分が出た場合は PR をブロックする
 
 > 補足: Buf の breaking 検査は `google.api.http` などのカスタムオプション変更を互換性判定に含めないため、
 > 外向き契約（OpenAPI）は「生成物差分検出」を CI に含める。
