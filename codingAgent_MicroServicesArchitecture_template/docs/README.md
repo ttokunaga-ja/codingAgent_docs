@@ -2,6 +2,10 @@
 
 この `docs/` 配下は「マイクロサービス + Gateway + 契約駆動 + 運用」を前提にした設計/運用ドキュメント集です。
 
+## Quickstart（最短で開発開始）
+0. `00_quickstart/QUICKSTART.md`
+1. `00_quickstart/PROJECT_DECISIONS.md`（プロジェクト固有の決定事項SSOT）
+
 ## まず読む（最短ルート）
 1. 技術スタック: `02_tech_stack/STACK.md`
 2. 全体構成: `01_architecture/MICROSERVICES_MAP.md`

@@ -15,6 +15,9 @@
 - `NEXT_PUBLIC_API_BASE_URL`：ブラウザから参照する API base
 - `API_BASE_URL`：サーバー専用（RSC / Route Handler）
 
+テンプレのデフォルト：
+- `.env.example` を用意しているため、プロジェクトでは `.env.local` を作って値を確定させる
+
 ハードコード禁止：ホスト名/ポート番号は docs と env に集約し、ソース内に散らさない。
 
 ## ローカル起動手順（テンプレ）

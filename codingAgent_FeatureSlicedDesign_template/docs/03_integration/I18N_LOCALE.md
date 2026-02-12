@@ -9,8 +9,21 @@
 
 - ルーティング方式（path prefix など）をプロジェクトとして固定する
 - 文字列は “画面直書き” を禁止し、辞書/キーで管理する
-- UIに表示する文字列は**すべて翻訳キー（変数）として管理**し、表示内容は各言語ごとのJSONファイル（例：`public/locales/{lang}/common.json` または `src/locales/{lang}.json`）から読み出すことを**必須**とする
+- UIに表示する文字列は**すべて翻訳キー（変数）として管理**し、表示内容は各言語ごとのJSONファイルから読み出すことを**必須**とする
 - 日付/数値/通貨フォーマットは `shared/lib` に集約する
+
+---
+
+## テンプレ既定（このリポジトリのSSOT）
+
+このテンプレは、以下を既定として同梱しています。
+
+- 辞書ファイル配置: `public/locales/{lang}/common.json`
+	- 例: `public/locales/en/common.json`, `public/locales/ja/common.json`
+- 抽出: `npm run i18n:extract`（`i18next-scanner.config.js`）
+- 整合性チェック: `npm run i18n:check`（`scripts/i18n-check.js`）
+
+CI でも `i18n:extract` → `i18n:check` を実行して、翻訳キーの不足を検知します。
 
 ---
 

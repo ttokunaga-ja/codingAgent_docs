@@ -18,6 +18,10 @@
 2. プロジェクト固有の前提（後述）を埋め、SSOTを確定させる
 3. 実装で迷ったら、まずドキュメントを修正して“契約”を更新する
 
+### Quickstart（最短で開発開始）
+- `docs/00_quickstart/QUICKSTART.md`
+- `docs/00_quickstart/PROJECT_DECISIONS.md`
+
 ## プロジェクト固有で必ず埋めるもの（最低限）
 - サービス境界/責務: [docs/01_architecture/MICROSERVICES_MAP.md](docs/01_architecture/MICROSERVICES_MAP.md)
 - 外向き契約（OpenAPI）と運用: [docs/03_integration/API_CONTRACT_WORKFLOW.md](docs/03_integration/API_CONTRACT_WORKFLOW.md)

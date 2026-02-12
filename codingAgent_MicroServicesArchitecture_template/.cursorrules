@@ -12,6 +12,8 @@ Skill docs (agent playbooks) live under `docs/skills/`.
 Start here: `docs/skills/README.md`.
 
 Fastest path to understand the system (recommended):
+- `docs/00_quickstart/QUICKSTART.md`
+- `docs/00_quickstart/PROJECT_DECISIONS.md`
 - `docs/02_tech_stack/STACK.md`
 - `docs/01_architecture/MICROSERVICES_MAP.md`
 - `docs/01_architecture/CLEAN_ARCHITECTURE.md`

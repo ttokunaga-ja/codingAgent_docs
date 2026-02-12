@@ -49,6 +49,10 @@
 3. 新しい slice を作る前に `docs/01_architecture/SLICES_MAP.md` を更新する
 4. 実装で迷ったら、まずドキュメントを修正して“契約”を更新する（コードより先に）
 
+### Quickstart（最短で開発開始）
+- `docs/00_quickstart/QUICKSTART.md`
+- `docs/00_quickstart/PROJECT_DECISIONS.md`
+
 ## プロジェクト固有で必ず埋めるもの
 - `docs/03_integration/DOCKER_ENV.md`：local/staging の baseURL、認証方式、proxy方針
 - `docs/03_integration/API_GEN.md`：OpenAPI の取得方法、生成コマンド、生成物の置き場

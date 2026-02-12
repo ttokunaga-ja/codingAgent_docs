@@ -9,6 +9,10 @@
 
 ---
 
+## Quickstart（最短で開発開始）
+0. `00_quickstart/QUICKSTART.md`（30分で着手できる状態にする）
+1. `00_quickstart/PROJECT_DECISIONS.md`（プロジェクト固有の決定事項SSOT）
+
 ## まず読む（最短ルート）
 1. 技術スタック（SSOT）：`02_tech_stack/STACK.md`
 2. FSDの概要：`01_architecture/FSD_OVERVIEW.md`

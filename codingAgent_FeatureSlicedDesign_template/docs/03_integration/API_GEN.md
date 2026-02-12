@@ -17,6 +17,11 @@
    ```
 3. **実装**：生成物（React Query hooks / client）を利用して実装
 
+テンプレのデフォルト：
+- OpenAPI 配置：`openapi/openapi.yaml`
+- Orval 設定：`orval.config.ts`
+- 生成先：`src/shared/api/generated`
+
 補足：Orval は React Query hooks の生成に対応し、MSW handlers も生成できます（テストで有効）。
 
 ---
