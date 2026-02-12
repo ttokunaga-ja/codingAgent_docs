@@ -25,6 +25,8 @@ Thumbs.db
 *.swp
 
 # Environment variables (local overrides)
+.env
+!.env.example
 .env.local
 .env.*.local
 
